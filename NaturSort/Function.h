@@ -14,7 +14,7 @@ void sort(QStringList &sortList);
 *\param [in] sortList - набор строк
 *\return карта, где ключ - тип группы, значение - набор строк для группы
 */
-QMap<typeData, QStringList> hzhz(QStringList &input);
+QMap<typeData, QStringList> groupingForSort(QStringList &input);
 
 /*!
 * Функция выполняет естественную сортировку строк группы протоколов доступа
@@ -29,7 +29,7 @@ void sortProtocol(QStringList &sortList);
 void sortDisk(QStringList &sortList);
 
 /*!
-* Функция выполняет естественную сортировку строк группы протоколов расширения файлов
+* Функция выполняет естественную сортировку строк группы расширения файлов
 *\param [in|out] sortList - набор строк
 */
 void sortFilenameExtention(QStringList &sortList);
