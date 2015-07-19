@@ -1,10 +1,15 @@
 #include "Libs.h"
 
 
-
-
 /*!
 * Функция выполняет естественную сортировку строк
+*\param [in|out] sort - карта, где ключ - тип группы, значение - набор строк для группы
+*\return отсортированные строки
+*/
+QStringList ThisIsSorting(QMap<typeData, QStringList> &sort);
+
+/*!
+* Функция выполняет естественную сортировку строк названию
 *\param [in|out] sortList - набор строк
 */
 void sort(QStringList &sortList);
