@@ -1,9 +1,11 @@
 #include <QStringList>
 #include <QMap>
+#include <QTest>
+#include <QObject>
 
 
 // Перечисление типов групп для сортировки
-enum typeDate
+enum typeData
 {
 	protocol,
 	disk,
