@@ -6,41 +6,41 @@
 *\param [in|out] sort - карта, где ключ - тип группы, значение - набор строк для группы
 *\return отсортированные строки
 */
-QStringList ThisIsSorting(QMap<typeData, QStringList> &sort);
+QStringList sort(QMap<typeData, QStringList> &sort);
 
 /*!
 * Функция выполняет естественную сортировку строк названию
 *\param [in|out] sortList - набор строк
 */
-void sort(QStringList &sortList);
+void sortByLexeme(QStringList &sortList);
 
 /*!
 * Функция выполняет распределяют строки по группам сортировки
 *\param [in] sortList - набор строк
 *\return карта, где ключ - тип группы, значение - набор строк для группы
 */
-QMap<typeData, QStringList> groupingForSort(QStringList &input);
+QMap<typeData, QStringList> groupForSort(QStringList &input);
 
 /*!
 * Функция выполняет естественную сортировку строк группы протоколов доступа
 *\param [in|out] sortList - набор строк
 */
-void sortProtocol(QStringList &sortList);
+void sortByProtocol(QStringList &sortList);
 
 /*!
 * Функция выполняет естественную сортировку строк группы устройств хранения
 *\param [in|out] sortList - набор строк
 */
-void sortDisk(QStringList &sortList);
+void sortByDisk(QStringList &sortList);
 
 /*!
 * Функция выполняет естественную сортировку строк группы расширения файлов
 *\param [in|out] sortList - набор строк
 */
-void sortFilenameExtention(QStringList &sortList);
+void sortByFilenameExtention(QStringList &sortList);
 
 /*!
 * Функция выполняет естественную сортировку строк группы e-mail адресов
 *\param [in|out] sortList - набор строк
 */
-void sortEmail(QStringList &sortList);
+void sortByEmail(QStringList &sortList);
