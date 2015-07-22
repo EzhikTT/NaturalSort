@@ -2,7 +2,7 @@
 
 
 
-QStringList sort(QMap<typeData, QStringList> &sort)
+QStringList sortGroupedString(QMap<groupType, QStringList> &sort)
 {
 	QStringList res;
 
@@ -15,9 +15,9 @@ void sortByLexeme(QStringList &sortList)
 }
 
 
-QMap<typeData, QStringList> groupForSort(QStringList &input)
+QMap<groupType, QStringList> groupForSort(QStringList &input)
 {
-	QMap<typeData, QStringList> res;
+	QMap<groupType, QStringList> res;
 
 	return res;
 }

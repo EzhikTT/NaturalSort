@@ -166,7 +166,7 @@
 				>
 			</File>
 			<File
-				RelativePath=".\test_sort.cpp"
+				RelativePath=".\testSortGroupedString.cpp"
 				>
 			</File>
 		</Filter>
@@ -176,6 +176,10 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
+				RelativePath=".\Enumerations.h"
+				>
+			</File>
+			<File
 				RelativePath=".\Function.h"
 				>
 			</File>
@@ -184,14 +188,14 @@
 				>
 			</File>
 			<File
-				RelativePath=".\test_sort.h"
+				RelativePath=".\testSortGroupedString.h"
 				>
 				<FileConfiguration
 					Name="Release|Win32"
 					>
 					<Tool
 						Name="VCCustomBuildTool"
-						Description="Moc&apos;ing test_sort.h..."
+						Description="Moc&apos;ing testSortGroupedString.h..."
 						CommandLine="&quot;$(QTDIR)\bin\moc.exe&quot;  &quot;$(InputPath)&quot; -o &quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot;  -DUNICODE -DWIN32 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB &quot;-I.&quot; &quot;-I$(QTDIR)\include&quot; &quot;-I.\GeneratedFiles\$(ConfigurationName)\.&quot; &quot;-I$(QTDIR)\include\QtCore&quot; &quot;-I$(QTDIR)\include\QtTest&quot;&#x0D;&#x0A;"
 						AdditionalDependencies="&quot;$(QTDIR)\bin\moc.exe&quot;;$(InputPath)"
 						Outputs="&quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot;"
@@ -202,7 +206,7 @@
 					>
 					<Tool
 						Name="VCCustomBuildTool"
-						Description="Moc&apos;ing test_sort.h..."
+						Description="Moc&apos;ing testSortGroupedString.h..."
 						CommandLine="&quot;$(QTDIR)\bin\moc.exe&quot;  &quot;$(InputPath)&quot; -o &quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot;  -DUNICODE -DWIN32 -DQT_DLL -DQT_CORE_LIB &quot;-I.&quot; &quot;-I$(QTDIR)\include&quot; &quot;-I.\GeneratedFiles\$(ConfigurationName)\.&quot; &quot;-I$(QTDIR)\include\QtCore&quot; &quot;-I$(QTDIR)\include\QtTest&quot;&#x0D;&#x0A;"
 						AdditionalDependencies="&quot;$(QTDIR)\bin\moc.exe&quot;;$(InputPath)"
 						Outputs="&quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot;"
@@ -233,7 +237,7 @@
 				SourceControlFiles="false"
 				>
 				<File
-					RelativePath=".\GeneratedFiles\Release\moc_test_sort.cpp"
+					RelativePath=".\GeneratedFiles\Release\moc_testSortGroupedString.cpp"
 					>
 					<FileConfiguration
 						Name="Debug|Win32"
@@ -251,7 +255,7 @@
 				SourceControlFiles="false"
 				>
 				<File
-					RelativePath=".\GeneratedFiles\Debug\moc_test_sort.cpp"
+					RelativePath=".\GeneratedFiles\Debug\moc_testSortGroupedString.cpp"
 					>
 					<FileConfiguration
 						Name="Release|Win32"

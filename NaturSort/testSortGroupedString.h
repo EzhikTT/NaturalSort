@@ -6,13 +6,13 @@
 //#include <QObject>
 
 
-class test_sort:public QObject
+class testSortGroupedString:public QObject
 {
 	Q_OBJECT
 
 public:
-	test_sort(void);
-	~test_sort(void);
+	testSortGroupedString(void);
+	~testSortGroupedString(void);
 
 private slots:
 

@@ -1,4 +1,4 @@
-#include "Libs.h"
+#include "Enumerations.h"
 
 
 /*!
@@ -6,7 +6,7 @@
 *\param [in|out] sort - карта, где ключ - тип группы, значение - набор строк для группы
 *\return отсортированные строки
 */
-QStringList sort(QMap<typeData, QStringList> &sort);
+QStringList sortGroupedString(QMap<groupType, QStringList> &sort);
 
 /*!
 * Функция выполняет естественную сортировку строк названию
@@ -19,7 +19,7 @@ void sortByLexeme(QStringList &sortList);
 *\param [in] sortList - набор строк
 *\return карта, где ключ - тип группы, значение - набор строк для группы
 */
-QMap<typeData, QStringList> groupForSort(QStringList &input);
+QMap<groupType, QStringList> groupForSort(QStringList &input);
 
 /*!
 * Функция выполняет естественную сортировку строк группы протоколов доступа
