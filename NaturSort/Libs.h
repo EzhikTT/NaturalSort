@@ -1,6 +1,8 @@
 #include <QStringList>
 #include <QMap>
 
+
+// Перечисление типов групп для сортировки
 enum typeDate
 {
 	protocol,
@@ -10,6 +12,8 @@ enum typeDate
 	other,
 };
 
+
+// Перечесление видов протоколов
 enum protocolType
 {
 	dhcp,
@@ -23,6 +27,8 @@ enum protocolType
 	telnet,
 };
 
+
+// Перечесление видов расширения файлов 
 enum fEtype
 {
 	grafics,
