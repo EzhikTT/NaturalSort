@@ -4,6 +4,7 @@ testSortGroupedString::testSortGroupedString(void)
 {
 }
 
+// Имеются строки во всех группах для сортировки
 void testSortGroupedString::test1_allGroupsForSorting()
 {
 	QStringList test, ideal, check;
@@ -23,6 +24,7 @@ void testSortGroupedString::test1_allGroupsForSorting()
 	QCOMPARE(check.count(), ideal.count());
 }
 
+// Не все группы содержат строки для сортировки
 void testSortGroupedString::test2_notAllGroupsForSorting()
 {
 	QStringList test, ideal, check;
