@@ -1,5 +1,5 @@
 #include "Enumerations.h"
-
+#include "Libs.h"
 
 /*!
 * Функция выполняет естественную сортировку строк

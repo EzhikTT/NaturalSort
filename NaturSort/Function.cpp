@@ -1,7 +1,6 @@
 #include "Function.h"
 
 
-
 QStringList sortGroupedString(QMap<groupType, QStringList> &sort)
 {
 	QStringList res;

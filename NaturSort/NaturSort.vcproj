@@ -162,11 +162,19 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
+				RelativePath=".\Function.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\main.cpp"
 				>
 			</File>
 			<File
 				RelativePath=".\testGroupForSort.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Testing.cpp"
 				>
 			</File>
 			<File
@@ -236,6 +244,10 @@
 						Outputs="&quot;.\GeneratedFiles\$(ConfigurationName)\moc_$(InputName).cpp&quot;"
 					/>
 				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\Testing.h"
+				>
 			</File>
 			<File
 				RelativePath=".\testSortByDisk.h"
@@ -400,10 +412,6 @@
 			UniqueIdentifier="{D9D6E242-F8AF-46E4-B9FD-80ECBC20BA3E}"
 			ParseFiles="false"
 			>
-			<File
-				RelativePath=".\Function.cpp"
-				>
-			</File>
 		</Filter>
 		<Filter
 			Name="Generated Files"

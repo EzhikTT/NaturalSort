@@ -1,5 +1,6 @@
-#include "Libs.h"
+#pragma once
 
+#include "Libs.h"
 
 
 // Перечисление типов групп для сортировки
