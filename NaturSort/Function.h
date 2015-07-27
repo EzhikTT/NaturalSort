@@ -37,7 +37,7 @@ void sortByDisk(QStringList &sortList);
 * Функция выполняет естественную сортировку строк группы расширения файлов
 *\param [in|out] sortList - набор строк
 */
-void sortByFilenameExtention(QStringList &sortList);
+void sortByFilenameExtension(QStringList &sortList);
 
 /*!
 * Функция выполняет естественную сортировку строк группы e-mail адресов

@@ -55,7 +55,7 @@ void sortByDisk(QStringList &sortList)
 }
 
 
-void sortByFilenameExtention(QStringList &sortList)
+void sortByFilenameExtension(QStringList &sortList)
 {
 }
 

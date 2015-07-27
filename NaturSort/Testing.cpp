@@ -6,7 +6,7 @@ void testing()
 	testGroupForSort tGFS;
 	testSortByDisk tSBD;
 	testSortByEmail tSBE;
-	testSortByFilenameExtention tSBFE;
+	testSortByFilenameExtension tSBFE;
 	testSortByLexeme tSBL;
 	testSortByProtocol tSBP;
 	testSortGroupedString tSGS;

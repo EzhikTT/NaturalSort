@@ -26,7 +26,7 @@ enum protocolType
 	nntp,
 	ssh,
 	telnet,
-	otherP,
+	otherProtocol,
 };
 
 
@@ -41,5 +41,5 @@ enum fEtype
 	exefile,
 	refenceCodeFile,
 	objFile,
-	otherFE,
+	otherFilenameExtension,
 };

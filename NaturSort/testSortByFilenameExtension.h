@@ -2,13 +2,13 @@
 
 #include "Function.h"
 
-class testSortByFilenameExtention:public QObject
+class testSortByFilenameExtension:public QObject
 {
 	Q_OBJECT
 
 public:
-	testSortByFilenameExtention(void);
-	~testSortByFilenameExtention(void);
+	testSortByFilenameExtension(void);
+	~testSortByFilenameExtension(void);
 
 private slots:
 
