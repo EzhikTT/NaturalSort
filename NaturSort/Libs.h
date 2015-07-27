@@ -2,5 +2,7 @@
 #include <QMap>
 #include <QTest>
 #include <QObject>
+#include <QString>
+#include <QList>
 
 
