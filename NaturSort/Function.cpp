@@ -24,7 +24,7 @@ QMap<groupType, QStringList> groupForSort(QStringList &input)
 		{
 			res[disk]<<input.value(i);
 		}
-		else if(input.value(i).contains("@") && (input.value(i).lastIndexOf(".")==2 ||input.value(i).lastIndexOf(".")==1))
+		else if(input.value(i).contains("@") && input.value(i).count(".")==1)
 		{
 			res[email]<<input.value(i);
 		}
