@@ -57,8 +57,180 @@ QMap<groupType, QStringList> groupForSort(QStringList &input)
 	return res;
 }
 
+
 void sortByProtocol(QStringList &sortList)
 {
+	// Карта для хранения ссылок по протоколу доступа
+	// Ключ карты - имя , значения - список путь
+	QMap<protocolType, QStringList> sortingMap;
+
+	QStringList res;	// Результирующий лист
+
+	QString temp; // Буфер для текущей обрабатываемой строки
+
+	QString buf; // Буфер для ключа - домена
+
+	QString str; // Буфер для одного из значений ключа - имени адреса
+
+	QString aIterKlein; // Буфер для строки из списка для каждого 
+
+	// Заполнение карты путей
+	for(int i=0; i<sortList.count(); i++)
+	{
+		// Загрузка в бущер текущей строки для сортировки
+		temp=sortList[i];
+
+		// Условия для разных протоколов доступа
+		if(temp.contains("DHCP"))
+		{
+			// Получение адреса
+			str=temp.remove(QString("DHCP:"));
+
+			// Заполнение значение карты
+			sortingMap[dhcp]<<temp;
+		}
+		else if(temp.contains("DNS"))
+		{
+			// Получение адреса
+			str=temp.remove(QString("DNS:"));
+
+			// Заполнение значение карты
+			sortingMap[dns]<<temp;
+		}
+		else if(temp.contains("ftp"))
+		{
+			// Получение адреса
+			str=temp.remove(QString("ftp://"));
+
+			// Заполнение значение карты
+			sortingMap[ftp]<<temp;
+		}
+		else if(temp.contains("https"))
+		{
+			// Получение адреса
+			str=temp.remove(QString("https://"));
+
+			// Заполнение значение карты
+			sortingMap[https]<<temp;
+		}
+		else if(temp.contains("http"))
+		{
+			// Получение адреса
+			str=temp.remove(QString("http://"));
+
+			// Заполнение значение карты
+			sortingMap[http]<<temp;
+		}
+		else if(temp.contains("nntp"))
+		{
+			// Заполнение значение карты
+			sortingMap[nntp]<<temp;
+		}
+		else if(temp.contains("ntp"))
+		{
+			// Заполнение значение карты
+			sortingMap[ntp]<<temp;
+		}
+		else if(temp.contains("@") && temp.indexOf(":", temp.indexOf("@"))!=-1)
+		{
+			// Заполнение значение карты
+			sortingMap[ssh]<<temp;
+		}
+		else if(temp.contains("telnet"))
+		{
+			// Получение адреса
+			str=temp.remove(QString("telnet://"));
+
+			// Заполнение значение карты
+			sortingMap[telnet]<<temp;
+		}
+		else 
+		{
+			// Заполнение значение карты
+			sortingMap[otherProtocol]<<temp;
+		}
+	}
+
+	// Сортировка значений для каждого ключа
+	QMap<protocolType, QStringList>::iterator it=sortingMap.begin();
+	
+	for(;it!=sortingMap.end(); it++)
+	{
+		sortByLexeme(it.value());
+	}
+
+	// Загрузка в выходной лист значений для определенного ключа 	
+	for(int k=0; k<sortingMap[dhcp].count(); k++)
+	{
+		// Загрузка в буфер текущей строки для сортировки
+		aIterKlein="DHCP:"+sortingMap[dhcp][k];
+
+		// Добавление строки в выходной лист
+		res<<aIterKlein;
+	}
+	for(int k=0; k<sortingMap[dns].count(); k++)
+	{
+		// Загрузка в буфер текущей строки для сортировки
+		aIterKlein="DNS:"+sortingMap[dns][k];
+
+		// Добавление строки в выходной лист
+		res<<aIterKlein;
+	}
+	for(int k=0; k<sortingMap[ftp].count(); k++)
+	{
+		// Загрузка в буфер текущей строки для сортировки
+		aIterKlein="ftp://"+sortingMap[ftp][k];
+
+		// Добавление строки в выходной лист
+		res<<aIterKlein;
+	}
+	for(int k=0; k<sortingMap[http].count(); k++)
+	{
+		// Загрузка в буфер текущей строки для сортировки
+		aIterKlein="http://"+sortingMap[http][k];
+
+		// Добавление строки в выходной лист
+		res<<aIterKlein;
+	}
+	for(int k=0; k<sortingMap[https].count(); k++)
+	{
+		// Загрузка в буфер текущей строки для сортировки
+		aIterKlein="https://"+sortingMap[https][k];
+
+		// Добавление строки в выходной лист
+		res<<aIterKlein;
+	}
+	for(int k=0; k<sortingMap[ntp].count(); k++)
+	{
+		// Добавление строки в выходной лист
+		res<<sortingMap[ntp][k];
+	}
+	for(int k=0; k<sortingMap[nntp].count(); k++)
+	{
+		// Добавление строки в выходной лист
+		res<<sortingMap[nntp][k];
+	}
+	for(int k=0; k<sortingMap[ssh].count(); k++)
+	{
+		// Добавление строки в выходной лист
+		res<<sortingMap[ssh][k];
+	}
+	for(int k=0; k<sortingMap[telnet].count(); k++)
+	{
+		// Загрузка в буфер текущей строки для сортировки
+		aIterKlein="telnet://"+sortingMap[telnet][k];
+
+		// Добавление строки в выходной лист
+		res<<aIterKlein;
+	}
+	for(int k=0; k<sortingMap[otherProtocol].count(); k++)
+	{
+		// Добавление строки в выходной лист
+		res<<sortingMap[otherProtocol][k];
+	}	
+
+	// Замена данного листа на возвращаемый
+	sortList=res;
 }
 
 
@@ -105,9 +277,9 @@ void sortByDisk(QStringList &sortList)
 		}
 	}
 
-	QMap<QString, QStringList>::iterator it=sortingMap.begin();
-
 	// Сортировка значений для каждого ключа
+	QMap<QString, QStringList>::iterator it=sortingMap.begin();
+	
 	for(;it!=sortingMap.end(); it++)
 	{
 		sortByLexeme(it.value());
@@ -132,7 +304,7 @@ void sortByDisk(QStringList &sortList)
 		// Загрузка в выходной лист значений для определенного ключа 
 		for(int k=0; k<sortingMap[aIter].count(); k++)
 		{
-			// Загрузка в бущер текущей строки для сортировки
+			// Загрузка в буфер текущей строки для сортировки
 			aIterKlein=aIter+":\\"+sortingMap[aIter][k];
 
 			// Добавление строки в выходной лист
@@ -193,9 +365,9 @@ void sortByEmail(QStringList &sortList)
 		}
 	}
 
-	QMap<QString, QStringList>::iterator it=sortingMap.begin();
-
 	// Сортировка значений для каждого ключа
+	QMap<QString, QStringList>::iterator it=sortingMap.begin();
+	
 	for(;it!=sortingMap.end(); it++)
 	{
 		sortByLexeme(it.value());
@@ -221,7 +393,7 @@ void sortByEmail(QStringList &sortList)
 		// Загрузка в выходной лист значений для определенного ключа 
 		for(int k=0; k<sortingMap[aIter].count(); k++)
 		{
-			// Загрузка в бущер текущей строки для сортировки
+			// Загрузка в буфер текущей строки для сортировки
 			aIterKlein=sortingMap[aIter][k]+"@"+aIter;
 
 			// Добавление строки в выходной лист
