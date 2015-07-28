@@ -4,5 +4,6 @@
 #include <QObject>
 #include <QString>
 #include <QList>
+#include <QPair>
 
 
