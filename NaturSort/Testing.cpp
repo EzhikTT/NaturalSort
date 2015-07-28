@@ -3,19 +3,19 @@
 
 void testing()
 {
-	testGroupForSort tGFS;/*
+	testGroupForSort tGFS;
 	testSortByDisk tSBD;
 	testSortByEmail tSBE;
 	testSortByFilenameExtension tSBFE;
 	testSortByLexeme tSBL;
 	testSortByProtocol tSBP;
-	testSortGroupedString tSGS;*/
+	testSortGroupedString tSGS;
 
-	QTest::qExec(&tGFS); /*
+	QTest::qExec(&tGFS); 
 	QTest::qExec(&tSBD);
 	QTest::qExec(&tSBE);
 	QTest::qExec(&tSBFE);
 	QTest::qExec(&tSBL);
 	QTest::qExec(&tSBP);
-	QTest::qExec(&tSGS); */
+	QTest::qExec(&tSGS); 
 }
