@@ -15,7 +15,7 @@ QStringList sortGroupedString(QMap<groupType, QStringList> &sort);
 void sortByLexeme(QStringList &sortList);
 
 /*!
-* ‘ункци€ выполн€ет распредел€ют строки по группам сортировки
+*\fn ‘ункци€ выполн€ет распредел€ют строки по группам сортировки
 *\param [in] sortList - набор строк
 *\return карта, где ключ - тип группы, значение - набор строк дл€ группы
 */
