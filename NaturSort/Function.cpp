@@ -64,6 +64,84 @@ void sortByProtocol(QStringList &sortList)
 
 void sortByDisk(QStringList &sortList)
 {
+	// Карта для хранения путей по устройству хранения
+	// Ключ карты - имя , значения - список путь
+	QMap<QString, QStringList> sortingMap;
+
+	QStringList res;	// Результирующий лист
+
+	QStringList sortingKey; // Лист для сортировки ключей
+
+	QString temp; // Буфер для текущей обрабатываемой строки
+
+	QString buf; // Буфер для ключа - домена
+
+	QString str; // Буфер для одного из значений ключа - имени адреса
+
+	QString aIter; // Буфер для ключа при формировании выходного списка
+
+	QString aIterKlein; // Буфер для строки из списка для каждого 
+
+	// Заполнение карты путей
+	for(int i=0; i<sortList.count(); i++)
+	{
+		// Загрузка в бущер текущей строки для сортировки
+		temp=sortList[i];
+		
+		// Получение имени диска
+		buf=temp.section(":\\", 0, 0);
+
+		// Получение пути
+		str=temp.remove(buf+QString(":\\"));
+
+		// Заполнение значение карты или создание поля для ключа
+		if(sortingMap.contains(buf))
+		{
+			sortingMap[buf]<<str;
+		}
+		else
+		{ 
+			sortingMap.insert(buf, QStringList(str));
+		}
+	}
+
+	QMap<QString, QStringList>::iterator it=sortingMap.begin();
+
+	// Сортировка значений для каждого ключа
+	for(;it!=sortingMap.end(); it++)
+	{
+		sortByLexeme(it.value());
+	}
+
+	// Записей ключей в лист
+	it=sortingMap.begin();
+	for(;it!=sortingMap.end(); it++)
+	{
+		sortingKey<<it.key();
+	}
+
+	// Сортировка ключей
+	sortingKey.sort();
+
+	// Заполнение выходного листа
+	for(int j=0; j<sortingKey.count(); j++)
+	{
+		// Загрузка в бущер текущей строки для ключа
+		aIter=sortingKey[j];
+
+		// Загрузка в выходной лист значений для определенного ключа 
+		for(int k=0; k<sortingMap[aIter].count(); k++)
+		{
+			// Загрузка в бущер текущей строки для сортировки
+			aIterKlein=aIter+":\\"+sortingMap[aIter][k];
+
+			// Добавление строки в выходной лист
+			res<<aIterKlein;
+		}
+	}
+
+	// Замена данного листа на возвращаемый
+	sortList=res;
 }
 
 
@@ -131,12 +209,13 @@ void sortByEmail(QStringList &sortList)
 	}
 
 	// Сортировка ключей
-	sortByLexeme(sortingKey);
+	//sortByLexeme(sortingKey);
+	sortingKey.sort();
 
 	// Заполнение выходного листа
 	for(int j=0; j<sortingKey.count(); j++)
 	{
-		// Загрузка в бущер текущей строки для улюча
+		// Загрузка в бущер текущей строки для ключа
 		aIter=sortingKey[j];
 
 		// Загрузка в выходной лист значений для определенного ключа 
