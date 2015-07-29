@@ -501,6 +501,522 @@ void sortByDisk(QStringList &sortList)
 
 void sortByFilenameExtension(QStringList &sortList)
 {
+	// Карта для хранения адресов по доменам 
+	// Ключ карты - домен, значения - карты
+	// Ключ внутренней карты - расширение, значение - список имен файлов
+	QMap<fEtype, QMap<QString, QStringList>> sortingMap;	
+
+	QStringList res;	// Результирующий лист
+
+	QStringList sortingKey; // Лист для сортировки ключей
+
+	QString temp; // Буфер для текущей обрабатываемой строки
+
+	QString buf; // Буфер для ключа - домена
+
+	QString str; // Буфер для одного из значений ключа - имени адреса
+
+	QString aIter; // Буфер для ключа при формировании выходного списка
+
+	QString aIterKlein; // Буфер для строки из списка для каждой строки из списка
+
+	// Заполнение карты адресами
+	for(int i=0; i<sortList.count(); i++)
+	{
+		// Загрузка в бущер текущей строки для сортировки
+		temp=sortList[i];
+
+		// Получение расширения
+		buf=temp.section(".", 1);
+
+		// Получение имени
+		str=temp.remove(QString(".")+buf);
+		
+		// Заполнение карты в зависимости от расширения
+		if(buf=="3ds" || buf=="fbx" || buf=="ma" || buf=="dwg" || buf=="dfx" || buf=="max" || buf=="mb" || buf=="a3d" || buf=="lws" || buf=="unity" || buf=="bmp" || buf=="jpeg" || buf=="jpg" || buf=="gif" || buf=="png" || buf=="psd" || buf=="tga")
+		{			
+			// Заполнение значение карты или создание поля для ключа
+			if(sortingMap[grafics].contains(buf))
+			{
+				sortingMap[grafics][buf]<<str;
+			}
+			else
+			{ 
+				sortingMap[grafics].insert(buf, QStringList(str));
+			}
+		}
+		else if(buf=="aa" || buf=="mp3" || buf=="aac" || buf=="flac" || buf=="wav" || buf=="wma" || buf=="midi")
+		{
+			// Заполнение значение карты или создание поля для ключа
+			if(sortingMap[sound].contains(buf))
+			{
+				sortingMap[sound][buf]<<str;
+			}
+			else
+			{ 
+				sortingMap[sound].insert(buf, QStringList(str));
+			}
+		}
+		else if(buf=="3gp" || buf=="avi" || buf=="flv" || buf=="mpeg" || buf=="mkv")
+		{
+			// Заполнение значение карты или создание поля для ключа
+			if(sortingMap[video].contains(buf))
+			{
+				sortingMap[video][buf]<<str;
+			}
+			else
+			{ 
+				sortingMap[video].insert(buf, QStringList(str));
+			}
+		}
+		else if(buf=="txt" || buf=="rtf" || buf=="tex" || buf=="doc" || buf=="docx" || buf=="pdf" || buf=="djv" || buf=="fb2" || buf=="odt")
+		{
+			// Заполнение значение карты или создание поля для ключа
+			if(sortingMap[text].contains(buf))
+			{
+				sortingMap[text][buf]<<str;
+			}
+			else
+			{ 
+				sortingMap[text].insert(buf, QStringList(str));
+			}
+		}
+		else if(buf=="xml" || buf=="html" || buf=="xhtml" || buf=="php")
+		{
+			// Заполнение значение карты или создание поля для ключа
+			if(sortingMap[webpage].contains(buf))
+			{
+				sortingMap[webpage][buf]<<str;
+			}
+			else
+			{ 
+				sortingMap[webpage].insert(buf, QStringList(str));
+			}
+		}
+		else if(buf=="exe" || buf=="bat")
+		{
+			// Заполнение значение карты или создание поля для ключа
+			if(sortingMap[exefile].contains(buf))
+			{
+				sortingMap[exefile][buf]<<str;
+			}
+			else
+			{ 
+				sortingMap[exefile].insert(buf, QStringList(str));
+			}
+		}
+		else if(buf=="cpp" || buf=="c" || buf=="bas" || buf=="asm" || buf=="java" || buf=="js" || buf=="cs" || buf=="py" || buf=="pas" || buf=="rbw" || buf=="rb")
+		{
+			// Заполнение значение карты или создание поля для ключа
+			if(sortingMap[refenceCodeFile].contains(buf))
+			{
+				sortingMap[refenceCodeFile][buf]<<str;
+			}
+			else
+			{ 
+				sortingMap[refenceCodeFile].insert(buf, QStringList(str));
+			}
+		}
+		else if(buf=="obj")
+		{
+			// Заполнение значение карты или создание поля для ключа
+			if(sortingMap[objFile].contains(buf))
+			{
+				sortingMap[objFile][buf]<<str;
+			}
+			else
+			{ 
+				sortingMap[objFile].insert(buf, QStringList(str));
+			}
+		}
+		else
+		{
+			// Заполнение значение карты или создание поля для ключа
+			if(sortingMap[otherFilenameExtension].contains(buf))
+			{
+				sortingMap[otherFilenameExtension][buf]<<str;
+			}
+			else
+			{ 
+				sortingMap[otherFilenameExtension].insert(buf, QStringList(str));
+			}
+		}
+	}
+
+	// Дальше я пытался зациклить, но у меня студия ругается на обращение к enum'у по номеру
+	// Я пытался сделать цикл 0-8 и обращаться через этот инт к полям большой карты. 
+	// Мне выдало ошибку на обращение к enum'у. Я нашел метод GetName, но он тоже отказался работать.
+	// Как сделать нормального вида один цикл, а не эти 100500?
+	// Как правильно обратиться к enum'у
+
+	// Сортировка значений для каждого ключа 
+	QMap<QString, QStringList>::iterator itg=sortingMap[grafics].begin();
+	
+	for(;itg!=sortingMap[grafics].end(); itg++)
+	{
+		if(itg.value().count()>1)
+		{
+			sortByLexeme(itg.value());
+		}
+	}
+
+	// Записей ключей в лист
+	itg=sortingMap[grafics].begin();
+	for(;itg!=sortingMap[grafics].end(); itg++)
+	{
+		sortingKey<<itg.key();
+	}
+
+	// Сортировка ключей
+	sortingKey.sort();
+
+	// Заполнение выходного листа
+	for(int l=0; l<sortingKey.count(); l++)
+	{
+		// Загрузка в бущер текущей строки для ключа
+		aIter=sortingKey[l];
+
+		// Загрузка в выходной лист значений для определенного ключа 
+		for(int p=0; p<sortingMap[grafics][aIter].count(); p++)
+		{
+			// Загрузка в буфер текущей строки для сортировки
+			aIterKlein=sortingMap[grafics][aIter][p]+"."+aIter;
+
+			// Добавление строки в выходной лист
+			res<<aIterKlein;
+		}
+	}
+
+	// Отчистка списка ключей
+	sortingKey.clear();
+
+	// Сортировка значений для каждого ключа
+	QMap<QString, QStringList>::iterator its=sortingMap[sound].begin();
+	
+	for(;its!=sortingMap[sound].end(); its++)
+	{
+		if(its.value().count()>1)
+		{
+			sortByLexeme(its.value());
+		}
+	}
+
+	// Записей ключей в лист
+	its=sortingMap[sound].begin();
+	for(;its!=sortingMap[sound].end(); its++)
+	{
+		sortingKey<<its.key();
+	}
+
+	// Сортировка ключей
+	sortingKey.sort();
+
+	// Заполнение выходного листа
+	for(int l=0; l<sortingKey.count(); l++)
+	{
+		// Загрузка в бущер текущей строки для ключа
+		aIter=sortingKey[l];
+
+		// Загрузка в выходной лист значений для определенного ключа 
+		for(int p=0; p<sortingMap[sound][aIter].count(); p++)
+		{
+			// Загрузка в буфер текущей строки для сортировки
+			aIterKlein=sortingMap[sound][aIter][p]+"."+aIter;
+
+			// Добавление строки в выходной лист
+			res<<aIterKlein;
+		}
+	}
+
+	// Отчистка списка ключей
+	sortingKey.clear();
+
+	// Сортировка значений для каждого ключа
+	QMap<QString, QStringList>::iterator itv=sortingMap[video].begin();
+	
+	for(;itv!=sortingMap[video].end(); itv++)
+	{
+		if(itv.value().count()>1)
+		{
+			sortByLexeme(itv.value());
+		}
+	}
+
+	// Записей ключей в лист
+	itv=sortingMap[video].begin();
+	for(;itv!=sortingMap[video].end(); itv++)
+	{
+		sortingKey<<itv.key();
+	}
+
+	// Сортировка ключей
+	sortingKey.sort();
+
+	// Заполнение выходного листа
+	for(int l=0; l<sortingKey.count(); l++)
+	{
+		// Загрузка в бущер текущей строки для ключа
+		aIter=sortingKey[l];
+
+		// Загрузка в выходной лист значений для определенного ключа 
+		for(int p=0; p<sortingMap[video][aIter].count(); p++)
+		{
+			// Загрузка в буфер текущей строки для сортировки
+			aIterKlein=sortingMap[video][aIter][p]+"."+aIter;
+
+			// Добавление строки в выходной лист
+			res<<aIterKlein;
+		}
+	}
+
+	// Отчистка списка ключей
+	sortingKey.clear();
+
+	// Сортировка значений для каждого ключа
+	QMap<QString, QStringList>::iterator itt=sortingMap[text].begin();
+	
+	for(;itt!=sortingMap[text].end(); itt++)
+	{
+		if(itt.value().count()>1)
+		{
+			sortByLexeme(itt.value());
+		}
+	}
+
+	// Записей ключей в лист
+	itt=sortingMap[text].begin();
+	for(;itt!=sortingMap[text].end(); itt++)
+	{
+		sortingKey<<itt.key();
+	}
+
+	// Сортировка ключей
+	sortingKey.sort();
+
+	// Заполнение выходного листа
+	for(int l=0; l<sortingKey.count(); l++)
+	{
+		// Загрузка в бущер текущей строки для ключа
+		aIter=sortingKey[l];
+
+		// Загрузка в выходной лист значений для определенного ключа 
+		for(int p=0; p<sortingMap[text][aIter].count(); p++)
+		{
+			// Загрузка в буфер текущей строки для сортировки
+			aIterKlein=sortingMap[text][aIter][p]+"."+aIter;
+
+			// Добавление строки в выходной лист
+			res<<aIterKlein;
+		}
+	}
+
+	// Отчистка списка ключей
+	sortingKey.clear();
+
+	// Сортировка значений для каждого ключа
+	QMap<QString, QStringList>::iterator itw=sortingMap[webpage].begin();
+	
+	for(;itw!=sortingMap[webpage].end(); itw++)
+	{
+		if(itw.value().count()>1)
+		{
+			sortByLexeme(itw.value());
+		}
+	}
+
+	// Записей ключей в лист
+	itw=sortingMap[webpage].begin();
+	for(;itw!=sortingMap[webpage].end(); itw++)
+	{
+		sortingKey<<itw.key();
+	}
+
+	// Сортировка ключей
+	sortingKey.sort();
+
+	// Заполнение выходного листа
+	for(int l=0; l<sortingKey.count(); l++)
+	{
+		// Загрузка в бущер текущей строки для ключа
+		aIter=sortingKey[l];
+
+		// Загрузка в выходной лист значений для определенного ключа 
+		for(int p=0; p<sortingMap[webpage][aIter].count(); p++)
+		{
+			// Загрузка в буфер текущей строки для сортировки
+			aIterKlein=sortingMap[webpage][aIter][p]+"."+aIter;
+
+			// Добавление строки в выходной лист
+			res<<aIterKlein;
+		}
+	}
+
+	// Отчистка списка ключей
+	sortingKey.clear();
+
+	// Сортировка значений для каждого ключа
+	QMap<QString, QStringList>::iterator ite=sortingMap[exefile].begin();
+	
+	for(;ite!=sortingMap[exefile].end(); ite++)
+	{
+		if(ite.value().count()>1)
+		{
+			sortByLexeme(ite.value());
+		}
+	}
+
+	// Записей ключей в лист
+	ite=sortingMap[exefile].begin();
+	for(;ite!=sortingMap[exefile].end(); ite++)
+	{
+		sortingKey<<ite.key();
+	}
+
+	// Сортировка ключей
+	sortingKey.sort();
+
+	// Заполнение выходного листа
+	for(int l=0; l<sortingKey.count(); l++)
+	{
+		// Загрузка в бущер текущей строки для ключа
+		aIter=sortingKey[l];
+
+		// Загрузка в выходной лист значений для определенного ключа 
+		for(int p=0; p<sortingMap[exefile][aIter].count(); p++)
+		{
+			// Загрузка в буфер текущей строки для сортировки
+			aIterKlein=sortingMap[exefile][aIter][p]+"."+aIter;
+
+			// Добавление строки в выходной лист
+			res<<aIterKlein;
+		}
+	}
+
+	// Отчистка списка ключей
+	sortingKey.clear();
+
+	// Сортировка значений для каждого ключа
+	QMap<QString, QStringList>::iterator itr=sortingMap[refenceCodeFile].begin();
+	
+	for(;itr!=sortingMap[refenceCodeFile].end(); itr++)
+	{
+		if(itr.value().count()>1)
+		{
+			sortByLexeme(itr.value());
+		}
+	}
+
+	// Записей ключей в лист
+	itr=sortingMap[refenceCodeFile].begin();
+	for(;itr!=sortingMap[refenceCodeFile].end(); itr++)
+	{
+		sortingKey<<itr.key();
+	}
+
+	// Сортировка ключей
+	sortingKey.sort();
+
+	// Заполнение выходного листа
+	for(int l=0; l<sortingKey.count(); l++)
+	{
+		// Загрузка в бущер текущей строки для ключа
+		aIter=sortingKey[l];
+
+		// Загрузка в выходной лист значений для определенного ключа 
+		for(int p=0; p<sortingMap[refenceCodeFile][aIter].count(); p++)
+		{
+			// Загрузка в буфер текущей строки для сортировки
+			aIterKlein=sortingMap[refenceCodeFile][aIter][p]+"."+aIter;
+
+			// Добавление строки в выходной лист
+			res<<aIterKlein;
+		}
+	}
+
+	// Отчистка списка ключей
+	sortingKey.clear();
+
+	// Сортировка значений для каждого ключа
+	QMap<QString, QStringList>::iterator ito=sortingMap[objFile].begin();
+	
+	for(;ito!=sortingMap[objFile].end(); ito++)
+	{
+		if(ito.value().count()>1)
+		{
+			sortByLexeme(ito.value());
+		}
+	}
+
+	// Записей ключей в лист
+	ito=sortingMap[objFile].begin();
+	for(;ito!=sortingMap[objFile].end(); ito++)
+	{
+		sortingKey<<ito.key();
+	}
+
+	// Сортировка ключей
+	sortingKey.sort();
+
+	// Заполнение выходного листа
+	for(int l=0; l<sortingKey.count(); l++)
+	{
+		// Загрузка в бущер текущей строки для ключа
+		aIter=sortingKey[l];
+
+		// Загрузка в выходной лист значений для определенного ключа 
+		for(int p=0; p<sortingMap[objFile][aIter].count(); p++)
+		{
+			// Загрузка в буфер текущей строки для сортировки
+			aIterKlein=sortingMap[objFile][aIter][p]+"."+aIter;
+
+			// Добавление строки в выходной лист
+			res<<aIterKlein;
+		}
+	}
+
+	// Отчистка списка ключей
+	sortingKey.clear();
+
+	// Сортировка значений для каждого ключа
+	QMap<QString, QStringList>::iterator itf=sortingMap[otherFilenameExtension].begin();
+	
+	for(;itf!=sortingMap[otherFilenameExtension].end(); itf++)
+	{
+		if(itf.value().count()>1)
+		{
+			sortByLexeme(itf.value());
+		}
+	}
+
+	// Записей ключей в лист
+	itf=sortingMap[otherFilenameExtension].begin();
+	for(;itf!=sortingMap[otherFilenameExtension].end(); itf++)
+	{
+		sortingKey<<itf.key();
+	}
+
+	// Сортировка ключей
+	sortingKey.sort();
+
+	// Заполнение выходного листа
+	for(int l=0; l<sortingKey.count(); l++)
+	{
+		// Загрузка в бущер текущей строки для ключа
+		aIter=sortingKey[l];
+
+		// Загрузка в выходной лист значений для определенного ключа 
+		for(int p=0; p<sortingMap[otherFilenameExtension][aIter].count(); p++)
+		{
+			// Загрузка в буфер текущей строки для сортировки
+			aIterKlein=sortingMap[otherFilenameExtension][aIter][p]+"."+aIter;
+
+			// Добавление строки в выходной лист
+			res<<aIterKlein;
+		}
+	}
+
+	// Замена данного листа на возвращаемый
+	sortList=res;
 }
 
 
