@@ -44,7 +44,7 @@ void testSortByLexeme::test3_stringConsistOnlyOfLetters(void)
 	QStringList test, ideal;
 
 	test<<"Klio"<<"moon"<<"nut"<<"Kli"<<"lopl"<<"bbn";
-	ideal<<"bbn"<<"nut"<<"Kli"<<"Klio"<<"lopl"<<"moon";
+	ideal<<"bbn"<<"Kli"<<"Klio"<<"lopl"<<"moon"<<"nut";
 
 	sortByLexeme(test);
 
@@ -61,7 +61,7 @@ void testSortByLexeme::test4_stringConsistOnlyOfNumbers(void)
 	QStringList test, ideal;
 
 	test<<"7640"<<"67"<<"33"<<"666"<<"7896";
-	ideal<<"34"<<"67"<<"666"<<"7640"<<"7896";
+	ideal<<"33"<<"67"<<"666"<<"7640"<<"7896";
 
 	sortByLexeme(test);
 

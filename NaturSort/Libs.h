@@ -5,5 +5,5 @@
 #include <QString>
 #include <QList>
 #include <QPair>
-
+#include <QRegExp>
 

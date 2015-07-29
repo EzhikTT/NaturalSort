@@ -44,3 +44,11 @@ void sortByFilenameExtension(QStringList &sortList);
 *\param [in|out] sortList - набор строк
 */
 void sortByEmail(QStringList &sortList);
+
+/*!
+*\fn Функция сравнения двух строк
+*\param [in] s1 - первая строка
+*\param [in] s2 - вторая строка
+*\return логический результат сравнения
+*/
+bool caseInsensitiveLessThan(const QString &s1, const QString &s2);
