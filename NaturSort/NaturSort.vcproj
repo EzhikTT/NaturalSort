@@ -166,6 +166,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\In-Out.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\main.cpp"
 				>
 			</File>
@@ -213,6 +217,10 @@
 			</File>
 			<File
 				RelativePath=".\Function.h"
+				>
+			</File>
+			<File
+				RelativePath=".\In-Out.h"
 				>
 			</File>
 			<File

@@ -6,4 +6,5 @@
 #include <QList>
 #include <QPair>
 #include <QRegExp>
-
+#include <QFile>
+#include <QTextStream>
