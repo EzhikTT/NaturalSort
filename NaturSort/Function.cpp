@@ -3,8 +3,19 @@
 
 QStringList sortGroupedString(QMap<groupType, QStringList> &sort)
 {
-	QStringList res;
+	QStringList res; // Возвращаемый список
 
+	// Вызов функций для каждой группы
+	sortByProtocol(sort[protocol]);
+	sortByDisk(sort[disk]);
+	sortByFilenameExtension(sort[filenameExtension]);
+	sortByEmail(sort[email]);
+	sortByLexeme(sort[other]);
+
+	// Запись в результирующий список отсортированных групп 
+	res<<sort[protocol]<<sort[disk]<<sort[filenameExtension]<<sort[email]<<sort[other];
+
+	// Возврат списка из функции
 	return res;
 }
 
@@ -209,7 +220,7 @@ QMap<groupType, QStringList> groupForSort(QStringList &input)
 		// Условие для группы расширений файлов
 		else if(temp.count(".")==1)
 		{
-			res[filenameExtention]<<temp;
+			res[filenameExtension]<<temp;
 		}
 		// Условие для строк, не попавших ни в одну из групп
 		else

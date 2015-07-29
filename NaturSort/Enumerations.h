@@ -8,7 +8,7 @@ enum groupType
 {
 	protocol,			// Протоколы доступа
 	disk,				// Место хранения
-	filenameExtention,	// Расширение файла
+	filenameExtension,	// Расширение файла
 	email,				// E-mail адрес
 	other,				// Строки, не подходящие под вышеперечисленные группы 
 };

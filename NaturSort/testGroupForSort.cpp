@@ -20,8 +20,8 @@ void testGroupForSort::test1_containsStringsForAllGroups()
 	QCOMPARE(testM.value(disk).value(0), QString("C:\\Programm files\\pop"));
 	QCOMPARE(testM.value(disk).value(1), QString("D:\\Install\\"));
 
-	QCOMPARE(testM.value(filenameExtention).value(0), QString("Hhhht.mpeg"));
-	QCOMPARE(testM.value(filenameExtention).value(1), QString("Main.cpp"));
+	QCOMPARE(testM.value(filenameExtension).value(0), QString("Hhhht.mpeg"));
+	QCOMPARE(testM.value(filenameExtension).value(1), QString("Main.cpp"));
 
 	QCOMPARE(testM.value(email).value(0), QString("kolp@rambler.ru"));
 	QCOMPARE(testM.value(email).value(1), QString("abbys@gmail.com"));
@@ -45,8 +45,8 @@ void testGroupForSort::test2_notContainsStringsForAllGroups()
 
 	QCOMPARE(testM.value(disk).count(), 0);
 
-	QCOMPARE(testM.value(filenameExtention).value(0), QString("Hhhht.mpeg"));
-	QCOMPARE(testM.value(filenameExtention).value(1), QString("Main.cpp"));
+	QCOMPARE(testM.value(filenameExtension).value(0), QString("Hhhht.mpeg"));
+	QCOMPARE(testM.value(filenameExtension).value(1), QString("Main.cpp"));
 
 	QCOMPARE(testM.value(email).value(0), QString("kolp@rambler.ru"));
 	QCOMPARE(testM.value(email).value(1), QString("abbys@gmail.com"));
