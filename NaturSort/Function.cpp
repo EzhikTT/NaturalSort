@@ -649,47 +649,55 @@ void sortByFilenameExtension(QStringList &sortList)
 	// Как сделать нормального вида один цикл, а не эти 100500?
 	// Как правильно обратиться к enum'у
 
-	// Сортировка значений для каждого ключа 
-	QMap<QString, QStringList>::iterator itg=sortingMap[grafics].begin();
-	
-	for(;itg!=sortingMap[grafics].end(); itg++)
+	for(int j=0; j<9; j++)
 	{
-		if(itg.value().count()>1)
+		fEtype v;
+		v=static_cast<fEtype>(j);
+		// Сортировка значений для каждого ключа 
+		QMap<QString, QStringList>::iterator itg=sortingMap[v].begin();
+		
+		for(;itg!=sortingMap[v].end(); itg++)
 		{
-			sortByLexeme(itg.value());
+			if(itg.value().count()>1)
+			{
+				sortByLexeme(itg.value());
+			}
 		}
-	}
 
-	// Записей ключей в лист
-	itg=sortingMap[grafics].begin();
-	for(;itg!=sortingMap[grafics].end(); itg++)
-	{
-		sortingKey<<itg.key();
-	}
-
-	// Сортировка ключей
-	sortingKey.sort();
-
-	// Заполнение выходного листа
-	for(int l=0; l<sortingKey.count(); l++)
-	{
-		// Загрузка в бущер текущей строки для ключа
-		aIter=sortingKey[l];
-
-		// Загрузка в выходной лист значений для определенного ключа 
-		for(int p=0; p<sortingMap[grafics][aIter].count(); p++)
+		// Записей ключей в лист
+		itg=sortingMap[v].begin();
+		for(;itg!=sortingMap[v].end(); itg++)
 		{
-			// Загрузка в буфер текущей строки для сортировки
-			aIterKlein=sortingMap[grafics][aIter][p]+"."+aIter;
-
-			// Добавление строки в выходной лист
-			res<<aIterKlein;
+			sortingKey<<itg.key();
 		}
+
+		// Сортировка ключей
+		sortingKey.sort();
+
+		// Заполнение выходного листа
+		for(int l=0; l<sortingKey.count(); l++)
+		{
+			// Загрузка в бущер текущей строки для ключа
+			aIter=sortingKey[l];
+
+			// Загрузка в выходной лист значений для определенного ключа 
+			for(int p=0; p<sortingMap[v][aIter].count(); p++)
+			{
+				// Загрузка в буфер текущей строки для сортировки
+				aIterKlein=sortingMap[v][aIter][p]+"."+aIter;
+
+				// Добавление строки в выходной лист
+				res<<aIterKlein;
+			}
+		}
+		// Отчистка списка ключей
+		sortingKey.clear();
 	}
 
-	// Отчистка списка ключей
-	sortingKey.clear();
 
+
+
+	/*
 	// Сортировка значений для каждого ключа
 	QMap<QString, QStringList>::iterator its=sortingMap[sound].begin();
 	
@@ -1013,7 +1021,7 @@ void sortByFilenameExtension(QStringList &sortList)
 			// Добавление строки в выходной лист
 			res<<aIterKlein;
 		}
-	}
+	}*/
 
 	// Замена данного листа на возвращаемый
 	sortList=res;

@@ -33,13 +33,13 @@ enum protocolType
 // Перечесление видов расширения файлов 
 enum fEtype
 {
-	grafics,
-	sound,
-	video,
-	text,
-	webpage,
-	exefile,
-	refenceCodeFile,
-	objFile,
-	otherFilenameExtension,
+	grafics=0,
+	sound=1,
+	video=2,
+	text=3,
+	webpage=4,
+	exefile=5,
+	refenceCodeFile=6,
+	objFile=7,
+	otherFilenameExtension=8,
 };
