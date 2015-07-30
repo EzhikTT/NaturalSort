@@ -8,6 +8,17 @@ int main(int argc, char *argv[])
 {
 	QCoreApplication a(argc, argv);
 
+	/*QStringList test, out;
+
+	test<<"D:\\1.txt"<<"D:\\22_2.txt"<<"10_kps.xml"<<"11_rules.xml"<<"32_rules.txt"<<"01_test.xml"<<"02_fest.xml"<<"prc.xml"<<"01.xml"<<"_01.xml"<<"http://example.com"<<"htpp://example2.com";
+
+	QMap<groupType, QStringList> groupingStr;
+
+	//sort=read(QString(argv[1]));
+	groupingStr=groupForSort(test);
+	out=sortGroupedString(groupingStr);
+	write(QString("testOut.txt"), out);*/
+
 	if(argc==2 && !strcmp(argv[1], "-t"))
 	{
 		testing();

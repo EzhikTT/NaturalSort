@@ -21,4 +21,6 @@ private slots:
 
 	// Не все группы содержат строки для сортировки
 	void test2_notAllGroupsForSorting();
+
+	void test3_strangeSituation();
 };
