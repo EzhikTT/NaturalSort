@@ -7,22 +7,20 @@ QStringList read(const QString &fileName)
 
 	QFile File(fileName); // Привязка имени к файлу
 
+	QString rAll;
+
 	// Открываем файл на чтение
 	if(File.open(QIODevice::ReadOnly | QIODevice::Text))
 	{
 		QTextStream in(&File);
-		while (!in.atEnd())
-        {
-            QString str=in.readLine();
-			if(str!="\n")
-			{
-				res<<str;
-			}
-        }
+
+		rAll=in.readAll();
+
 		// Закрытие файла
         File.close(); 
 	}
 
+	res=rAll.split("\n", QString::SkipEmptyParts);
 	return res;
 }
 
