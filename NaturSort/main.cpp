@@ -8,9 +8,6 @@ int main(int argc, char *argv[])
 {
 	QCoreApplication a(argc, argv);
 
-	char flag;
-	char temp[256]={};
-
 	if(argc==2 && !strcmp(argv[1], "-t"))
 	{
 		testing();
