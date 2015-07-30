@@ -520,7 +520,11 @@ void sortByFilenameExtension(QStringList &sortList)
 
 	QString aIterKlein; // Буфер для строки из списка для каждой строки из списка
 
-	QStringList graficsL, soundL, videoL, textL, webpageL, refenceCodeFileL; // Списки с расширениями файлов для соответствующих групп
+	QList<QStringList> allFilenameExtension; // Список всех расширений 
+
+	QStringList graficsL, soundL, videoL, textL, webpageL, exefileL, refenceCodeFileL, objFileL; // Списки с расширениями файлов для соответствующих групп
+
+	bool other; // Флаг, что в строке присутсвует неизвестное расширение
 
 	// Заполнение списков форматами 
 	graficsL<<"3ds"<<"fbx"<<"ma"<<"dwg"<<"dfx"<<"max"<<"mb"<<"a3d"<<"lws"<<"unity"<<"bmp"<<"jpeg"<<"jpg"<<"gif"<<"png"<<"psd"<<"tga";
@@ -528,7 +532,12 @@ void sortByFilenameExtension(QStringList &sortList)
 	videoL<<"3gp"<<"avi"<<"flv"<<"mpeg"<<"mkv";
 	textL<<"txt"<<"rtf"<<"tex"<<"doc"<<"docx"<<"pdf"<<"djv"<<"fb2"<<"odt";
 	webpageL<<"xml"<<"html"<<"xhtml"<<"php";
+	exefileL<<"exe"<<"bat";
 	refenceCodeFileL<<"cpp"<<"c"<<"bas"<<"asm"<<"java"<<"js"<<"cs"<<"py"<<"pas"<<"rbw"<<"rb";
+	objFileL<<"obj";
+
+	// Заполнение списка расширений
+	allFilenameExtension<<graficsL<<soundL<<videoL<<textL<<webpageL<<exefileL<<refenceCodeFileL<<objFileL;
 
 	// Заполнение карты адресами
 	for(int i=0; i<sortList.count(); i++)
@@ -541,105 +550,33 @@ void sortByFilenameExtension(QStringList &sortList)
 
 		// Получение имени
 		str=temp.remove(QString(".")+buf);
-		
-		// Заполнение карты в зависимости от расширения
-		if(graficsL.contains(buf))
+
+		// Флаг, что расширение еще не известно
+		other=true;
+
+		for(int h=0; h<allFilenameExtension.count() && other; h++)
 		{			
-			// Заполнение значение карты или создание поля для ключа
-			if(sortingMap[grafics].contains(buf))
+			if(allFilenameExtension[h].contains(buf))
 			{
-				sortingMap[grafics][buf]<<str;
+				fEtype a;
+				a=static_cast<fEtype>(h);
+
+				// Заполнение значение карты или создание поля для ключа
+				if(sortingMap[a].contains(buf))
+				{
+					sortingMap[a][buf]<<str;
+				}
+				else
+				{ 
+					sortingMap[a].insert(buf, QStringList(str));
+				}
+
+				other=false;
 			}
-			else
-			{ 
-				sortingMap[grafics].insert(buf, QStringList(str));
-			}
+			
 		}
-		else if(soundL.contains(buf))
-		{
-			// Заполнение значение карты или создание поля для ключа
-			if(sortingMap[sound].contains(buf))
-			{
-				sortingMap[sound][buf]<<str;
-			}
-			else
-			{ 
-				sortingMap[sound].insert(buf, QStringList(str));
-			}
-		}
-		else if(videoL.contains(buf))
-		{
-			// Заполнение значение карты или создание поля для ключа
-			if(sortingMap[video].contains(buf))
-			{
-				sortingMap[video][buf]<<str;
-			}
-			else
-			{ 
-				sortingMap[video].insert(buf, QStringList(str));
-			}
-		}
-		else if(textL.contains(buf))
-		{
-			// Заполнение значение карты или создание поля для ключа
-			if(sortingMap[text].contains(buf))
-			{
-				sortingMap[text][buf]<<str;
-			}
-			else
-			{ 
-				sortingMap[text].insert(buf, QStringList(str));
-			}
-		}
-		else if(webpageL.contains(buf))
-		{
-			// Заполнение значение карты или создание поля для ключа
-			if(sortingMap[webpage].contains(buf))
-			{
-				sortingMap[webpage][buf]<<str;
-			}
-			else
-			{ 
-				sortingMap[webpage].insert(buf, QStringList(str));
-			}
-		}
-		else if(buf=="exe" || buf=="bat")
-		{
-			// Заполнение значение карты или создание поля для ключа
-			if(sortingMap[exefile].contains(buf))
-			{
-				sortingMap[exefile][buf]<<str;
-			}
-			else
-			{ 
-				sortingMap[exefile].insert(buf, QStringList(str));
-			}
-		}
-		else if(refenceCodeFileL.contains(buf))
-		{
-			// Заполнение значение карты или создание поля для ключа
-			if(sortingMap[refenceCodeFile].contains(buf))
-			{
-				sortingMap[refenceCodeFile][buf]<<str;
-			}
-			else
-			{ 
-				sortingMap[refenceCodeFile].insert(buf, QStringList(str));
-			}
-		}
-		else if(buf=="obj")
-		{
-			// Заполнение значение карты или создание поля для ключа
-			if(sortingMap[objFile].contains(buf))
-			{
-				sortingMap[objFile][buf]<<str;
-			}
-			else
-			{ 
-				sortingMap[objFile].insert(buf, QStringList(str));
-			}
-		}
-		else
+
+		if(other)
 		{
 			// Заполнение значение карты или создание поля для ключа
 			if(sortingMap[otherFilenameExtension].contains(buf))
