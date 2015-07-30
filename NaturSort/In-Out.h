@@ -3,4 +3,4 @@
 
 QStringList read(QString &fileName);
 
-void save(QString &fileName, QStringList &out);
+void write(QString &fileName, QStringList &out);

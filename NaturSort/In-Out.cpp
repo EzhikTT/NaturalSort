@@ -26,7 +26,7 @@ QStringList read(QString &fileName)
 	return res;
 }
 
-void save(QString &fileName, QStringList &out)
+void write(QString &fileName, QStringList &out)
 {
 	QFile File(fileName); // Привязка имени к файлу
 

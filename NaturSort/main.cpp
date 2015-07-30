@@ -11,36 +11,24 @@ int main(int argc, char *argv[])
 	char flag;
 	char temp[256]={};
 
-	QStringList sorting, out;
-
-	QMap<groupType, QStringList> gropingStr;
-
-	printf("Run testing functions? y/n \n");
-	scanf("%c", &flag);
-	if(flag=='y')
+	if(argc==2 && !strcmp(argv[1], "-t"))
 	{
 		testing();
 	}
+	else if(argc==3)
+	{
+		QStringList sort, out;
+		QMap<groupType, QStringList> groupingStr;
 
-	printf("Enter the file name: \n");
-	gets(temp);
-	gets(temp);
-	
-	QString fileName(temp);
-
-	sorting=read(fileName);
-
-	gropingStr=groupForSort(sorting);
-
-	out=sortGroupedString(gropingStr);
-
-	fileName=fileName.remove(".txt");
-
-	fileName+=QString("_out.txt");
-
-	save(fileName, out);
-
-	printf("\nSort files saved successfully. It has postfix \"_out\"");
+		sort=read(QString(argv[1]));
+		groupingStr=groupForSort(sort);
+		out=sortGroupedString(groupingStr);
+		write(QString(argv[2]), out);
+	}
+	else
+	{
+		printf("Format command is incorrect.\n");
+	}
 
 	return a.exec();
 }
