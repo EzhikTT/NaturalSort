@@ -1,7 +1,7 @@
 #include "In-Out.h"
 
 
-QStringList read(QString &fileName)
+QStringList read(const QString &fileName)
 {
 	QStringList res;	// Возвращаемый список
 
@@ -26,7 +26,7 @@ QStringList read(QString &fileName)
 	return res;
 }
 
-void write(QString &fileName, QStringList &out)
+void write(const QString &fileName, QStringList &out)
 {
 	QFile File(fileName); // Привязка имени к файлу
 

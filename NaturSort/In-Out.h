@@ -1,6 +1,6 @@
 #include "Libs.h"
 
 
-QStringList read(QString &fileName);
+QStringList read(const QString &fileName);
 
-void write(QString &fileName, QStringList &out);
+void write(const QString &fileName, QStringList &out);
