@@ -1,5 +1,10 @@
 #include "testSortByFilenameExtension.h"
 
+/*!
+ * \file testSortByFilenameExtension.cpp
+ * \brief Файл состоит из реализации методов класса тестирования функции sortByFilenameExtension
+*/
+
 testSortByFilenameExtension::testSortByFilenameExtension(void)
 {
 }

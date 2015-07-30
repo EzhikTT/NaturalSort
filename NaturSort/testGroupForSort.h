@@ -2,6 +2,16 @@
 
 #include "Function.h"
 
+/*!
+ * \file testGroupForSort.h
+ * \brief Файл состоит из реализации методов класса тестирования функции groupForSort
+*/
+
+/*!
+ * \class testGroupForSort
+ * \brief Класс тестирования функции groupForSort 
+*/
+
 class testGroupForSort:public QObject
 {
 	Q_OBJECT

@@ -195,3 +195,13 @@ FakesAssemblies/
 # Visual Studio 6 workspace options file
 *.opt
 *.txt
+*.png
+*.html
+*.js
+*.tex
+*.css
+latex/Makefile
+*.eps
+*.sty
+*.bat
+html/latex/Makefile

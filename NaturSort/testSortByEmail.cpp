@@ -1,5 +1,10 @@
 #include "testSortByEmail.h"
 
+/*!
+ * \file testSortByEmail.cpp
+ * \brief Файл состоит из реализации методов класса тестирования функции sortByEmail
+*/
+
 testSortByEmail::testSortByEmail(void)
 {
 }

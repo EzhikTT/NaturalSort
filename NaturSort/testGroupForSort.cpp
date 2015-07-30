@@ -1,5 +1,10 @@
 #include "testGroupForSort.h"
 
+/*!
+ * \file testGroupForSort.cpp
+ * \brief Файл состоит из реализации методов класса тестирования функции groupForSort
+*/
+
 testGroupForSort::testGroupForSort(void)
 {
 }

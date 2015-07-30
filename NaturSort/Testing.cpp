@@ -1,5 +1,9 @@
 #include "Testing.h"
 
+/*!
+ * \file Testing.cpp
+ * \brief Файл состоит из реализации функции тестирования
+*/
 
 void testing()
 {

@@ -2,6 +2,15 @@
 
 #include "Function.h"
 
+/*!
+ * \file testSortByLexeme.h
+ * \brief Файл состоит из реализации методов класса тестирования функции sortByLexeme
+*/
+
+/*!
+ * \class testSortByLexeme
+ * \brief Класс тестирования функции sortByLexeme 
+*/
 class testSortByLexeme:public QObject
 {
 	Q_OBJECT

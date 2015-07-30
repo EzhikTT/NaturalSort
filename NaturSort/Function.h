@@ -2,53 +2,66 @@
 #include "Libs.h"
 
 /*!
-*\fn Функция выполняет естественную сортировку строк
-*\param [in|out] sort - карта, где ключ - тип группы, значение - набор строк для группы
-*\return отсортированные строки
+ * \file Function.h
+ * \brief Файл состоит из прототипов основных функций
+*/
+
+/*!
+* \fn QStringList sortGroupedString(QMap<groupType, QStringList> &sort)
+* \brief Функция выполняет естественную сортировку строк
+* \param[in,out] sort  карта, где ключ - тип группы, значение - набор строк для группы
+* \return Отсортированные строки
 */
 QStringList sortGroupedString(QMap<groupType, QStringList> &sort);
 
 /*!
-*\fn Функция выполняет естественную сортировку строк названию
-*\param [in|out] sortList - набор строк
+* \fn void sortByLexeme(QStringList &sortList)
+* \brief Функция выполняет естественную сортировку строк названию
+* \param[in,out] sortList  Набор строк
 */
 void sortByLexeme(QStringList &sortList);
 
 /*!
-*\fn Функция выполняет распределяют строки по группам сортировки
-*\param [in] sortList - набор строк
-*\return карта, где ключ - тип группы, значение - набор строк для группы
+* \fn QMap<groupType, QStringList> groupForSort(QStringList &input)
+* \brief Функция выполняет распределяют строки по группам сортировки
+* \param [in] sortList  набор строк
+* \return Карта, где ключ  тип группы, значение - набор строк для группы
 */
 QMap<groupType, QStringList> groupForSort(QStringList &input);
 
 /*!
-* Функция выполняет естественную сортировку строк группы протоколов доступа
-*\param [in|out] sortList - набор строк
+* \fn void sortByProtocol(QStringList &sortList)
+* \brief Функция выполняет естественную сортировку строк группы протоколов доступа
+* \param[in,out] sortList  Набор строк
 */
 void sortByProtocol(QStringList &sortList);
 
 /*!
-*\fn Функция выполняет естественную сортировку строк группы устройств хранения
-*\param [in|out] sortList - набор строк
+* \fn void sortByDisk(QStringList &sortList)
+* \brief Функция выполняет естественную сортировку строк группы устройств хранения
+* \param[in,out] sortList  Набор строк
 */
 void sortByDisk(QStringList &sortList);
 
 /*!
-*\fn Функция выполняет естественную сортировку строк группы расширения файлов
-*\param [in|out] sortList - набор строк
+* \fn void sortByFilenameExtension(QStringList &sortList)
+* \brief Функция выполняет естественную сортировку строк группы расширения файлов
+* \param[in,out] sortList Набор строк
 */
 void sortByFilenameExtension(QStringList &sortList);
 
 /*!
-*\fn Функция выполняет естественную сортировку строк группы e-mail адресов
-*\param [in|out] sortList - набор строк
+* \fn void sortByEmail(QStringList &sortList)
+* \brief Функция выполняет естественную сортировку строк группы e-mail адресов
+* \param[in,out] sortList Набор строк
 */
 void sortByEmail(QStringList &sortList);
 
 /*!
-*\fn Функция сравнения двух строк
-*\param [in] s1 - первая строка
-*\param [in] s2 - вторая строка
-*\return логический результат сравнения
+* \fn bool caseInsensitiveLessThan(const QString &s1, const QString &s2)
+* \brief Функция сравнения двух строк
+* \param[in] s1  Первая строка
+* \param[in] s2  Вторая строка
+* \return Логический результат сравнения
 */
 bool caseInsensitiveLessThan(const QString &s1, const QString &s2);

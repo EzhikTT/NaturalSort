@@ -8,3 +8,8 @@
 #include <QRegExp>
 #include <QFile>
 #include <QTextStream>
+
+/*!
+ * \file Libs.h
+ * \brief Файл состоит из подключаемых библиотек
+*/

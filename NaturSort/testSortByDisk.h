@@ -2,6 +2,15 @@
 
 #include "Function.h"
 
+/*!
+ * \file testSortByDisk.h
+ * \brief Файл состоит из реализации методов класса тестирования функции sortByDisk
+*/
+
+/*!
+ * \class testSortByDisk
+ * \brief Класс тестирования функции sortByDisk 
+*/
 class testSortByDisk:public QObject
 {
 	Q_OBJECT

@@ -1,5 +1,9 @@
 #include "In-Out.h"
 
+/*!
+ * \file In-Out.cpp
+ * \brief Файл состоит из реализации функций ввода/вывода
+*/
 
 QStringList read(const QString &fileName)
 {

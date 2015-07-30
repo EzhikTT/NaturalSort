@@ -2,6 +2,15 @@
 
 #include "Function.h"
 
+/*!
+ * \file testSortByFilenameExtension.h
+ * \brief Файл состоит из реализации методов класса тестирования функции sortByFilenameExtension
+*/
+
+/*!
+ * \class testSortByFilenameExtension
+ * \brief Класс тестирования функции sortByFilenameExtension 
+*/
 class testSortByFilenameExtension:public QObject
 {
 	Q_OBJECT

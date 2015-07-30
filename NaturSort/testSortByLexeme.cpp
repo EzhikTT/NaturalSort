@@ -1,5 +1,10 @@
 #include "testSortByLexeme.h"
 
+/*!
+ * \file testSortByLexeme.cpp
+ * \brief Файл состоит из реализации методов класса тестирования функции sortByLexeme
+*/
+
 testSortByLexeme::testSortByLexeme(void)
 {
 }

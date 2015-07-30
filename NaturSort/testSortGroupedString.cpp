@@ -1,5 +1,10 @@
 #include "testSortGroupedString.h"
 
+/*!
+ * \file testSortGroupedString.cpp
+ * \brief Файл состоит из реализации методов класса тестирования функции sortGroupedString
+*/
+
 testSortGroupedString::testSortGroupedString(void)
 {
 }

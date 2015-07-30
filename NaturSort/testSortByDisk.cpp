@@ -1,5 +1,10 @@
 #include "testSortByDisk.h"
 
+/*!
+ * \file testSortByDisk.cpp
+ * \brief Файл состоит из реализации методов класса тестирования функции sortByDisk
+*/
+
 testSortByDisk::testSortByDisk(void)
 {
 }

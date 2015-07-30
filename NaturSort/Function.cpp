@@ -1,5 +1,9 @@
 #include "Function.h"
 
+/*!
+ * \file Function.cpp
+ * \brief Файл состоит из реализации основных функций
+*/
 
 QStringList sortGroupedString(QMap<groupType, QStringList> &sort)
 {

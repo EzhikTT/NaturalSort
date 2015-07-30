@@ -1,5 +1,10 @@
 #include "testSortByProtocol.h"
 
+/*!
+ * \file testSortByProtocol.cpp
+ * \brief Файл состоит из реализации методов класса тестирования функции sortByProtocol
+*/
+
 testSortByProtocol::testSortByProtocol(void)
 {
 }

@@ -2,6 +2,15 @@
 
 #include "Function.h"
 
+/*!
+ * \file testSortByProtocol.h
+ * \brief Файл состоит из реализации методов класса тестирования функции sortByProtocol
+*/
+
+/*!
+ * \class testSortByProtocol
+ * \brief Класс тестирования функции sortByProtocol 
+*/
 class testSortByProtocol:public QObject
 {
 	Q_OBJECT

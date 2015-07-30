@@ -1,10 +1,16 @@
 #pragma once
 
-//#include "Libs.h"
 #include "Function.h"
-//#include <QTest>
-//#include <QObject>
 
+/*!
+ * \file testSortGroupedString.h
+ * \brief Файл состоит из класса тестирования функции sortGroupedString
+*/
+
+/*!
+ * \class testSortGroupedString
+ * \brief Класс тестирования функции sortGroupedString 
+*/
 
 class testSortGroupedString:public QObject
 {
@@ -22,5 +28,6 @@ private slots:
 	// Не все группы содержат строки для сортировки
 	void test2_notAllGroupsForSorting();
 
+	// Спорная ситуация 
 	void test3_strangeSituation();
 };

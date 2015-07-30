@@ -2,6 +2,15 @@
 
 #include "Function.h"
 
+/*!
+ * \file testSortByEmail.h
+ * \brief Файл состоит из реализации методов класса тестирования функции sortByEmail
+*/
+
+/*!
+ * \class testSortByEmail
+ * \brief Класс тестирования функции sortByEmail 
+*/
 class testSortByEmail:public QObject
 {
 	Q_OBJECT
